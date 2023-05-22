@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import ProjetPro
+from .serializers import ProjetProtSerializer
 
-# Create your views here.
+
+class ProjetProList(generics.ListCreateAPIView):
+    queryset = ProjetPro.objects.all()
+    serializer_class = ProjetProtSerializer
+
+
+class ProjetProDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ProjetPro.objects.all()
+    serializer_class = ProjetProtSerializer
